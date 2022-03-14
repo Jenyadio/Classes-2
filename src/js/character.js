@@ -13,4 +13,23 @@ export default class Character {
     this.health = 100;
     this.level = 1;
   }
+
+  levelUp() {
+    if (this.health > 0) {
+      this.level += 1;
+      this.attack += (this.attack / 100) * 20;
+      this.defence += (this.defence / 100) * 20;
+      this.health = 100;
+    } else {
+      throw new Error('you are dead BYE');
+    }
+  }
+
+  damage(points) {
+    if (this.health > 0) {
+      this.health -= points * (1 - this.defence / 100);
+    } else {
+      throw new Error('you are dead BYE');
+    }
+  }
 }
